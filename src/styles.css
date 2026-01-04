@@ -1,0 +1,125 @@
+/* Primero los imports, luego el resto */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Estilos globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #222;
+  color: white;
+  overflow-x: hidden;
+  image-rendering: pixelated;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #306230;
+  border-radius: 6px;
+  border: 2px solid #0f380f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8bac0f;
+  border-radius: 6px;
+  border: 2px solid #0f380f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9bbc0f;
+}
+
+/* Animaciones */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+@keyframes victory {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes damage {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+}
+
+@keyframes healthDeplete {
+  from { width: 100%; }
+  to { width: var(--health-percentage); }
+}
+
+.victory-animation {
+  animation: victory 0.5s ease-in-out 3;
+}
+
+.shake-animation {
+  animation: shake 0.5s ease-in-out;
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.damage-animation {
+  animation: damage 0.3s ease-in-out;
+}
+
+/* Efectos de pixelado */
+.pixel-border {
+  border-style: solid;
+  border-width: 4px;
+  border-image-slice: 2;
+  border-image-width: 2;
+  border-image-outset: 0;
+  border-image-source: url('data:image/svg+xml;utf8,<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M2 2h2v2H2zM6 2h2v2H6zM10 2h2v2h-2zM2 6h2v2H2zM6 6h2v2H6zM10 6h2v2h-2zM2 10h2v2H2zM6 10h2v2H6zM10 10h2v2h-2z" fill="%230f380f"/></svg>');
+}
+
+/* Tipografía especial para Game Boy */
+.gameboy-text {
+  font-family: 'Press Start 2P', cursive;
+  image-rendering: pixelated;
+  text-rendering: optimizeSpeed;
+}
+
+/* Efecto de escaneo CRT */
+.crt::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
